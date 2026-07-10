@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+:root {
+  --background-2: #09090b;
+  --background-3: #232b34;
+  --contrast: #ffffff;
+  --size: 5rem;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --size: 3.5rem;
+  }
+}
+
+.keyboard-board {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--size) * 0.04);
+  perspective: 1000px;
+}
+
+.key-position {
+  transform: rotate(0) rotateY(0.05turn) rotateX(-0.1turn);
+  transform-style: preserve-3d;
+}
+
+.key-3d {
+  position: relative;
+  width: var(--size);
+  height: var(--size);
+  border: 0.1rem solid var(--background-3);
+  border-radius: calc(var(--size) * 0.2);
+  background: var(--background-2);
+  color: var(--contrast);
+  box-shadow: 0.15rem 0.15rem 0 0 var(--background-3),
+              0.3rem 0.3rem 0 0 var(--background-3),
+              0.45rem 0.45rem 0 0 var(--background-3),
+              0.6rem 0.6rem 0 0 var(--background-3);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.key-3d:hover {
+  cursor: pointer;
+  transform: translate(0.3rem, 0.3rem);
+  box-shadow: 0.15rem 0.15rem 0 0 var(--background-3),
+              0.3rem 0.3rem 0 0 var(--background-3),
+              0.45rem 0.45rem 0 0 var(--background-3),
+              0.5rem 0.5rem 0 0 var(--background-3);
+}
+
+.key-3d:active {
+  cursor: grabbing;
+  transform: translate(0.8rem, 0.8rem);
+  box-shadow: 0.1rem 0.1rem 0 0 var(--background-3),
+              0.1rem 0.1rem 0 0 var(--background-3),
+              0.2rem 0.2rem 0 0 var(--background-3),
+              0.2rem 0.2rem 0 0 var(--background-3);
+  filter: blur(0.02rem);
+}
+
+.key-3d.call-to-action {
+  width: 160px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.call-to-action-content {
+  position: relative;
+}
+
+.call-to-action-content:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  left: 15%;
+  bottom: -4px;
+  background: #fff;
+  height: 1.5px;
+  transition: 0.3s ease-out;
+}
+
+.key-3d.call-to-action:hover .call-to-action-content:after {
+  width: 70%;
+}
+
+.drop-shadow-green {
+  filter: drop-shadow(0 0 8px #59ff7e);
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-container {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+.marquee-container:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+@import "tailwindcss";
+
+/* Marquee keyframe animation */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Register it as a Tailwind utility so animate-marquee works */
+@theme {
+  --animate-marquee: marquee 30s linear infinite;
+}
+
+/* Fade edges */
+.marquee-container {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+/* Pause on hover */
+.marquee-container:hover .animate-marquee {
+  animation-play-state: paused;
+} 
