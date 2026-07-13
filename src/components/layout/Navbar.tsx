@@ -5,11 +5,8 @@ interface NavbarProps {
 }
 
 const navItems = [
-  { id: "hero", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "experience", label: "Experience" },
+  { id: "home", label: "Home" },
   { id: "projects", label: "Projects" },
-  { id: "contact", label: "Contact" },
 ];
 
 export default function Navbar({ activeSection }: NavbarProps) {
@@ -17,7 +14,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
     e.preventDefault();
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
@@ -25,7 +22,9 @@ export default function Navbar({ activeSection }: NavbarProps) {
     <nav>
       <ul className="flex items-center gap-5 sm:gap-8 text-[10px] sm:text-xs font-bold tracking-widest uppercase">
         {navItems.map((item) => {
-          const isActive = activeSection === item.id;
+          const isActive =
+            activeSection === item.id ||
+            (item.id === "home" && activeSection === "tech-stack");
           return (
             <li key={item.id}>
               <a

@@ -109,42 +109,45 @@ export default function Hero({
     { label: "Resume", href: "https://read.cv/sushilthakare", iconName: "resume" },
     { label: "Email", href: "mailto:sushil.thakar.work@gamil.com", iconName: "email" },
   ],
-  nextSectionId = "about",
+  nextSectionId = "projects",
 }: HeroProps) {
   // Container animation configuration for staggered children entrance
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0, y: 24 },
     visible: {
       opacity: 1,
+      y: 0,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.1,
+        duration: 0.6,
+        ease: "easeOut" as const,
+        staggerChildren: 0.1,
       },
     },
   };
 
   // Individual item entrance variants matching the reference site's upward fade-in slide
   const itemVariants = {
-    hidden: { opacity: 0, y: 24 },
+    hidden: { opacity: 0, y: 16 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.5,
-        ease: [0.39, 0.575, 0.565, 1] as const, // Cast to read-only tuple for Framer Motion typings
+        duration: 0.4,
+        ease: "easeOut" as const,
       },
     },
   };
 
   return (
     <section
-      id="hero"
-      className="min-h-[85vh] flex flex-col justify-center py-16 md:py-24"
+      id="home"
+      className="min-h-[60vh] flex flex-col justify-center py-10 md:py-12"
     >
       <motion.div
         variants={containerVariants}
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
         className="flex flex-col gap-8 items-start"
       >
         {/* Status Badge */}

@@ -97,55 +97,9 @@
 
 @keyframes marquee {
   from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  to { transform: translateX(calc(-100% - var(--gap))); }
 }
 
 .animate-marquee {
-  animation: marquee 30s linear infinite;
-}
-
-.marquee-container {
-  overflow: hidden;
-  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-}
-
-.marquee-container:hover .animate-marquee {
-  animation-play-state: paused;
-}
-
-@import "tailwindcss";
-
-/* Marquee keyframe animation */
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-/* Register it as a Tailwind utility so animate-marquee works */
-@theme {
-  --animate-marquee: marquee 30s linear infinite;
-}
-
-/* Fade edges */
-.marquee-container {
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 10%,
-    black 90%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 10%,
-    black 90%,
-    transparent 100%
-  );
-}
-
-/* Pause on hover */
-.marquee-container:hover .animate-marquee {
-  animation-play-state: paused;
+  animation: marquee var(--duration) infinite linear;
 } 

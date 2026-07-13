@@ -7,12 +7,25 @@ import type { Project } from '../../data/projects'
 // Animation variants
 // ---------------------------------------------------------------------------
 
-const headingVariants = {
+const sectionVariants = {
   hidden: { opacity: 0, y: 24 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: 'easeOut' },
+    transition: {
+      duration: 0.6,
+      ease: 'easeOut' as const,
+      staggerChildren: 0.1,
+    },
+  },
+}
+
+const headingVariants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: 'easeOut' as const },
   },
 }
 
@@ -30,7 +43,7 @@ const cardVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.4, ease: 'easeOut' },
+    transition: { duration: 0.4, ease: 'easeOut' as const },
   },
 }
 
@@ -100,13 +113,17 @@ function ProjectCard({ project }: ProjectCardProps) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-20 md:py-28">
+    <motion.section
+      id="projects"
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      className="py-8 md:py-12"
+    >
       {/* ---- Header block ---- */}
       <motion.div
         variants={headingVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
         className="flex flex-col gap-5 mb-12"
       >
         {/* Top row: heading block (left) + view-all link (right) */}
@@ -147,15 +164,12 @@ export default function Projects() {
       {/* ---- 2-column grid of project cards ---- */}
       <motion.div
         variants={gridVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
         className="grid grid-cols-1 sm:grid-cols-2 gap-5"
       >
         {projects.map((project) => (
           <ProjectCard key={project.title} project={project} />
         ))}
       </motion.div>
-    </section>
+    </motion.section>
   )
 }
