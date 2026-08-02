@@ -11,6 +11,13 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+ {
+    title: 'RepoTriager',
+    year: '2024',
+    description: 'An autonomous LangChain agent that reads a GitHub repository like a new contributor would, fetches the README, checks open issues, and tells you exactly what to work on next.',
+    image: restfulImg,
+    link: '#',
+  },
   {
     title: 'Stayify',
     year: '2024',
@@ -25,5 +32,6 @@ export const projects: Project[] = [
     image: restfulImg,
     link: '#',
   },
+  
 ]
 
