@@ -91,7 +91,6 @@ interface HeroProps {
   statusText?: string;
   isAvailable?: boolean;
   name?: string;
-  role?: string;
   subheading?: string;
   socialLinks?: SocialLink[];
   nextSectionId?: string;
@@ -101,13 +100,12 @@ export default function Hero({
   statusText = "Available for projects",
   isAvailable = true,
   name = "Sushil",
-  role = "software engineer",
-  subheading = "Mainly working in the JavaScript ecosystem, I’m a dedicated problem-solver who thrives on learning and building.",
+  subheading = "Focused on speed, clean system architecture, and building software that solves real friction.",
   socialLinks = [
     { label: "Github", href: "https://github.com/sushilthakare", iconName: "github" },
-    { label: "LinkedIn", href: "nkedin.com/in/sushilthakare", iconName: "linkedin" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/sushilthakare/", iconName: "linkedin" },
     { label: "Resume", href: "https://read.cv/sushilthakare", iconName: "resume" },
-    { label: "Email", href: "mailto:sushil.thakar.work@gamil.com", iconName: "email" },
+    { label: "Email", href: "mailto:sushil.thakare.work@gmail.com", iconName: "email" },
   ],
   nextSectionId = "projects",
 }: HeroProps) {
@@ -141,7 +139,7 @@ export default function Hero({
   return (
     <section
       id="home"
-      className="min-h-[60vh] flex flex-col justify-center py-10 md:py-12"
+      className="min-h-[85vh] flex flex-col justify-center py-12 md:py-20"
     >
       <motion.div
         variants={containerVariants}
@@ -175,7 +173,7 @@ export default function Hero({
           <h1 className="text-[clamp(2.25rem,6.5vw,3.75rem)] font-medium leading-[1.1] tracking-tight text-slate-300">
             Hi, I’m <span className="text-white font-semibold">{name}</span>.
             <br />
-            A <span className="text-violet-500 font-semibold dark:text-violet-400">{role}</span>.
+            I engineer <span className="text-violet-500 font-semibold dark:text-violet-400">web applications & AI systems</span>.
           </h1>
         </motion.div>
 
