@@ -24,14 +24,12 @@ export default function App() {
       />
 
       {/* Main Content Area: Stacked Sections */}
-      <main className="mx-auto max-w-4xl px-6 flex flex-col gap-8">
+      <main className="mx-auto max-w-4xl px-6 flex flex-col">
         <Hero />
         <TechStack />
         <Projects />
+        <Footer />
       </main>
-
-      {/* Footer — last section on the page */}
-      <Footer />
     </div>
   );
 }

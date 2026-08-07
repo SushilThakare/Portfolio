@@ -84,9 +84,11 @@ function ProjectCard({ project }: ProjectCardProps) {
       {/* Card body */}
       <div className="flex flex-col flex-1 gap-2.5 p-5">
         {/* Year badge */}
-        <span className="w-fit rounded-full px-2.5 py-0.5 text-xs font-medium text-slate-400 bg-white/5 border border-white/10 select-none">
-          {project.year}
-        </span>
+        {project.year && (
+          <span className="w-fit rounded-full px-2.5 py-0.5 text-xs font-medium text-slate-400 bg-white/5 border border-white/10 select-none">
+            {project.year}
+          </span>
+        )}
 
         {/* Title */}
         <h3 className="text-base font-semibold text-slate-200 leading-snug">
@@ -119,7 +121,7 @@ export default function Projects() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
-      className="py-8 md:py-12"
+      className="py-12 md:py-20"
     >
       {/* ---- Header block ---- */}
       <motion.div
@@ -130,30 +132,36 @@ export default function Projects() {
         <div className="flex items-start justify-between gap-6 flex-wrap">
           {/* Left: label + heading + subheading */}
           <div className="flex flex-col gap-3 max-w-xl">
-            {/* Section label */}
-            <span className="text-xs font-semibold uppercase tracking-widest text-slate-500 select-none">
-              Projects
-            </span>
+            {/* Section label badge */}
+            <div className="flex w-fit items-center rounded-full gap-2 py-1.5 px-3.5 border border-slate-700/50 bg-slate-900/40 backdrop-blur-sm select-none">
+              <svg className="size-4 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                <polyline points="2 17 12 22 22 17" />
+                <polyline points="2 12 12 17 22 12" />
+              </svg>
+              <span className="text-xs font-medium text-slate-300 tracking-wide uppercase">
+                Featured Projects
+              </span>
+            </div>
 
             {/* Large heading */}
             <h2 className="text-[clamp(1.75rem,5vw,2.75rem)] font-semibold leading-[1.15] tracking-tight text-slate-200">
-              Milestones in the{' '}
+              Selected{' '}
               <br />
-              <em className="not-italic text-violet-400">learning journey</em>
+              <em className="not-italic text-violet-400">systems & ships</em>
             </h2>
 
             {/* Subheading */}
             <p className="text-sm text-slate-400 leading-relaxed">
-              A curated collection of things I've built along the way.
-              <br />
-              Each project taught me something new — about code and beyond.
+              Production builds and open-source tools engineered to automate workflows and handle real data.
             </p>
           </div>
 
           {/* Right: view all link */}
-          {/* TODO: swap href with a real /projects route once it exists */}
           <a
-            href="#"
+            href="https://github.com/SushilThakare?tab=repositories"
+            target="_blank"
+            rel="noopener noreferrer"
             className="shrink-0 self-start mt-1 text-sm font-medium text-slate-400 hover:text-violet-400 transition-colors duration-150"
           >
             View all projects →
